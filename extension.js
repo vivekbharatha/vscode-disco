@@ -19,7 +19,7 @@ function activate(context) {
 	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('extension.startDisco', function () {
 		// The code you place here will be executed every time your command is executed
-		startDisco();
+		startDisco().then(() => {});
 	});
 
 	context.subscriptions.push(disposable);
@@ -44,22 +44,24 @@ function activate(context) {
 
 function startDisco() {
 	let configuration = vscode.workspace.getConfiguration();
-	setInterval(() => {
-		configuration.update("workbench.colorCustomizations", {
-			"activityBar.background": randomColor(),
-		}, vscode.workspace.name === undefined).then((data) => {
-			console.log(data);
-		}, 10000);
+	return new Promise((resolve, reject) => {
+		setInterval(() => {
+			configuration.update("workbench.colorCustomizations", {
+				"activityBar.background": randomColor()
+			}, vscode.workspace.name === undefined).then((data) => {
+				resolve();
+			});
+		}, 2000); // TODO :: configurable
 	});
 }
 
 function randomColor() {
 	var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+  	var color = '#';
+	for (var i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+  	return color;
 }
 
 exports.activate = activate;
