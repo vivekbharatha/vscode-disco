@@ -2,6 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 
+let discoInterval;
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
@@ -17,12 +19,20 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.startDisco', function () {
+	let r_startDisco = vscode.commands.registerCommand('extension.startDisco', function () {
 		// The code you place here will be executed every time your command is executed
-		startDisco().then(() => {});
+		startDisco().then(() => {
+			vscode.window.showInformationMessage('Disco started!');
+		});
 	});
 
-	context.subscriptions.push(disposable);
+	let r_stopDisco = vscode.commands.registerCommand('extension.stopDisco', function () {
+		// The code you place here will be executed every time your command is executed
+		clearInterval(discoInterval);
+		vscode.window.showInformationMessage('Disco stoped!');
+	});
+
+	context.subscriptions.push(r_startDisco);
 }
 
 /**
@@ -45,11 +55,13 @@ function activate(context) {
 function startDisco() {
 	let configuration = vscode.workspace.getConfiguration();
 	return new Promise((resolve, reject) => {
-		setInterval(() => {
+		discoInterval = setInterval(() => {
 			configuration.update("workbench.colorCustomizations", {
 				"activityBar.background": randomColor()
 			}, vscode.workspace.name === undefined).then((data) => {
 				resolve();
+			}).catch((e) => {
+				vscode.window.showInformationMessage('Error in starting disco!');
 			});
 		}, 2000); // TODO :: configurable
 	});
