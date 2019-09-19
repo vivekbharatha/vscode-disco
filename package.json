@@ -3,6 +3,10 @@
 	"displayName": "vscode-disco",
 	"description": "",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vivekbharatha/vscode-disco.git"
+	},
 	"engines": {
 		"vscode": "^1.38.0"
 	},
@@ -22,7 +26,11 @@
 		]
 	},
 	"scripts": {
-		"test": "node ./test/runTest.js"
+		"test": "node ./test/runTest.js",
+		"vscode:prepublish": "./node_modules/.bin/webpack --mode production",
+    	"webpack": "./node_modules/.bin/webpack --mode development",
+    	"webpack-dev": "./node_modules/.bin/webpack --mode development --watch",
+    	"test-compile": "tsc -p ./"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
@@ -33,6 +41,9 @@
 		"glob": "^7.1.4",
 		"mocha": "^6.1.4",
 		"typescript": "^3.3.1",
-		"vscode-test": "^1.2.0"
-	}
+		"vscode-test": "^1.2.0",
+		"webpack": "^4.40.2",
+		"webpack-cli": "^3.3.9"
+	},
+	"publisher": "VivekBharatha"
 }
