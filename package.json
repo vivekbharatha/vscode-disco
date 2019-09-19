@@ -2,45 +2,59 @@
 	"name": "vscode-disco",
 	"displayName": "Disco",
 	"description": "",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vivekbharatha/vscode-disco.git"
 	},
 	"engines": {
-		"vscode": "^1.38.0"
+		"vscode": "^1.0.0"
 	},
 	"categories": [
-		"Other"
+		"Themes"
 	],
 	"activationEvents": [
 		"*"
 	],
-	"main": "./extension.js",
+	"keywords": [
+		"theme",
+		"basic",
+		"color",
+		"color change"
+	],
+	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "extension.startDisco",
-				"title": "Start Disco"
+				"title": "Disco Start"
 			},
 			{
 				"command": "extension.stopDisco",
-				"title": "Stop Disco"
+				"title": "Disco Stop"
+			},
+			{
+				"command": "extension.increaseDiscoIntervalTime",
+				"title": "Disco Increase Interval by 100 ms"
+			},
+			{
+				"command": "extension.decreaseDiscoIntervalTime",
+				"title": "Disco Decrease Interval by 100 ms"
 			}
 		]
 	},
 	"scripts": {
 		"test": "node ./test/runTest.js",
 		"vscode:prepublish": "./node_modules/.bin/webpack --mode production",
-    	"webpack": "./node_modules/.bin/webpack --mode development",
-    	"webpack-dev": "./node_modules/.bin/webpack --mode development --watch",
-    	"test-compile": "tsc -p ./"
+		"webpack": "./node_modules/.bin/webpack --mode development",
+		"webpack-dev": "./node_modules/.bin/webpack --mode development --watch",
+		"test-compile": "tsc -p ./"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
 		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.38.0",
+		"@types/vscode": "^1.0.0",
 		"eslint": "^5.13.0",
 		"glob": "^7.1.4",
 		"mocha": "^6.1.4",
@@ -49,5 +63,6 @@
 		"webpack": "^4.40.2",
 		"webpack-cli": "^3.3.9"
 	},
-	"publisher": "VivekBharatha"
+	"publisher": "VivekBharatha",
+	"icon": "resources/icon.png"
 }
