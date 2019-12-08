@@ -27,19 +27,23 @@
 		"commands": [
 			{
 				"command": "extension.startDisco",
-				"title": "Disco Start"
+				"title": "Disco: Start"
 			},
 			{
 				"command": "extension.stopDisco",
-				"title": "Disco Stop"
+				"title": "Disco: Stop"
+			},
+      {
+				"command": "extension.resetColors",
+				"title": "Disco: Reset Colors"
 			},
 			{
 				"command": "extension.increaseDiscoIntervalTime",
-				"title": "Disco Increase Interval by 100 ms"
+				"title": "Disco: Increase Interval by 100 ms"
 			},
 			{
 				"command": "extension.decreaseDiscoIntervalTime",
-				"title": "Disco Decrease Interval by 100 ms"
+				"title": "Disco: Decrease Interval by 100 ms"
 			}
 		]
 	},
