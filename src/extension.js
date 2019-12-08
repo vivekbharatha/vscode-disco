@@ -52,6 +52,12 @@ function activate(context) {
 		}
 	});
 
+	let r_defaultDisco = vscode.commands.registerCommand('extension.stopDisco', function () {
+		vscode._state = '';
+		clearInterval(vscode._discoInterval);
+		vscode.window.showInformationMessage('Disco default theme applied!');
+	});
+
 }
 
 exports.activate = activate;
