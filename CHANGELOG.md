@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.0.6 - 0.0.7] - 2019-12-08
+- Adds a command - Disco: Reset Colors (Which resets to default colors)
+
 ## [0.0.5] - 2019-09-19
 - Modular code
 - Commands renamed
